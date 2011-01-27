@@ -9,6 +9,7 @@ define(function (require, exports, module) {
 
     var ide = require('core/ide');
     var ext = require('core/ext');
+    var noderunner = require("ext/noderunner/noderunner");
     var markup = require('text!ext/themproject/themproject.xml');
 
     return ext.register('ext/themproject/themproject', {
