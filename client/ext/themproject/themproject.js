@@ -9,8 +9,10 @@ define(function (require, exports, module) {
 
     var ide = require('core/ide');
     var ext = require('core/ext');
-    var noderunner = require("ext/noderunner/noderunner");
+    var util = require("core/util");
+
     var markup = require('text!ext/themproject/themproject.xml');
+    var espresso = require("ext/themproject/espressomachine");
 
     return ext.register('ext/themproject/themproject', {
         name: 'The M Project',
@@ -24,7 +26,10 @@ define(function (require, exports, module) {
         },
 
         newmproject: function () {
-          util.alert('this is a test');
+          var filef = filefield.value; 
+          var paramf = paramfield.value; 
+          this.wizard.hide();
+          espresso.espresso(filef, paramf, false);
         },
 
         nodes: [],
@@ -44,6 +49,10 @@ define(function (require, exports, module) {
 
         init: function () {
           this.wizard = wizard;
+        },
+
+        stop: function () {
+          espresso.stop();
         },
 
         enable: function () {

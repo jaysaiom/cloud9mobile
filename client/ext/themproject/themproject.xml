@@ -9,17 +9,17 @@
     width     = "400">
     <a:vbox>
       <a:hbox padding="5" edge="10">
-        <a:label width="100">File</a:label>
-        <a:textbox id="filefield" flex="1" value="[@path]" />
-        
+        <a:label width="100">File Path</a:label>
+        <a:textbox id="filefield" flex="1" />
+
         <a:label width="100">Parameters</a:label>
-        <a:textbox id="paramfield" flex="1" value="" />
+        <a:textbox id="paramfield" flex="1" />
       </a:hbox>
       <a:divider />
       <a:hbox pack="end" padding="5" edge="10 10 5 10">
         <a:button class="ui-btn-green" default="2" caption="Run" 
           onclick = "
-          require('ext/themproject/themproject').newmproject(filefield.value, paramfield.value);
+          require('ext/themproject/themproject').newmproject();
           "/>
         <a:button onclick="wizard.hide()">Done</a:button>
       </a:hbox>
