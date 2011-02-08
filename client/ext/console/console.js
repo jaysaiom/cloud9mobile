@@ -451,7 +451,7 @@ return ext.register("ext/console/console", {
                 break;
              case "espresso":
                 res = message.body;
-                this.logNodeStream(res.out || res.err);
+                this.logNodeStream(res.out + '\n' + res.err);
                 this.log("", "divider");
                 break;
                 /*

@@ -43,7 +43,8 @@ Sys.inherits(TheMProject, Plugin);
 
       params = espresso.concat(params.concat(['-d', path]));
 
-      this.spawnCommand(node, params, message.cwd, null, null, function (code, err, out) {
+      this.spawnCommand('node', params, message.cwd, null, null, function (code, err, out) {
+
           self.sendResult(0, message.command, {
               code: code,
               argv: message.argv,

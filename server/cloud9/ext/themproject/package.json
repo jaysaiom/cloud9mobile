@@ -8,7 +8,7 @@
         "hint": "creates a new project",
           "commands": {
             "-p [PROJECTNAME]": { "hint": "name of the new project" },
-            "-w": { "hint": "create HelloWorld application" }
+            "-w [PROJECTNAME]": { "hint": "create HelloWorld application" }
           }
       }
     }
