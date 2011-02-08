@@ -449,6 +449,11 @@ return ext.register("ext/console/console", {
                 this.logNodeStream(res.out || res.err);
                 this.log("", "divider");
                 break;
+             case "espresso":
+                res = message.body;
+                this.logNodeStream(res.out || res.err);
+                this.log("", "divider");
+                break;
                 /*
             case "mkdir":
                 res = message.body;
