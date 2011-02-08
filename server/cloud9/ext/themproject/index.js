@@ -18,6 +18,24 @@ var TheMProject = module.exports = function (ide) {
 Sys.inherits(TheMProject, Plugin);
 
 (function () {
+
+    this._getParameters = function (message) {
+      var node = process.argv[0];
+      var espresso = [__dirname + '/espresso/m-init.js'];
+      var params = message.argv.slice(1);
+      var dirIndex = params.indexOf('-d');
+
+      console.log('index: ' + dirIndex);
+
+      if (dirIndex !== -1) {
+        params[dirIndex + 1] = this.ide.workspaceDir + params[dirIndex + 1];
+      } else {
+        params = params.concat(['-d', this.ide.workspaceDir]);
+      }
+
+      return espresso.concat(params);
+    };
+
     this.command = function (user, message, client) {
       if (!this[message.command]) {
         return false;
@@ -28,20 +46,15 @@ Sys.inherits(TheMProject, Plugin);
     };
 
     /*
-    this.$commandHints = function (commands, message, callback) {
-      console.dir(commands);
-      callback();
-    };
-    */
+     this.$commandHints = function (commands, message, callback) {
+     console.dir(commands);
+     callback();
+   };
+   */
 
     this.espresso = function (message) {
       var self = this;
-      var node = process.argv[0];
-      var path = this.ide.workspaceDir;
-      var espresso = [__dirname + '/espresso/m-init.js'];
-      var params = message.argv.slice(1);
-
-      params = espresso.concat(params.concat(['-d', path]));
+      var params = this._getParameters(message);
 
       this.spawnCommand('node', params, message.cwd, null, null, function (code, err, out) {
 
