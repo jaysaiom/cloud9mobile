@@ -22,3 +22,6 @@
 [submodule "support/apf"]
 	path = support/apf
 	url = http://github.com/ajaxorg/apf.git
+[submodule "server/cloud9/ext/themproject/espresso"]
+	path = server/cloud9/ext/themproject/espresso
+	url = https://github.com/mwaylabs/Espresso.git
